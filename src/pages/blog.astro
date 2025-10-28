@@ -3,12 +3,12 @@ import { getCollection } from "astro:content";
 import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "My Blog";
 const allPosts = await getCollection("blog");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
+  <p>This is where I will post about my journey.</p>
   <ul>
     {
       allPosts.map((post) => (
