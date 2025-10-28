@@ -1,0 +1,14 @@
+{
+  // 1. 저장 시 자동으로 포맷팅을 실행합니다.
+  "editor.formatOnSave": true,
+
+  // 2. "기본" 포맷터를 Biome으로 설정합니다.
+  // (이 설정이 .ts, .js, .json, .md 등 대부분의 파일에 적용됩니다.)
+  "editor.defaultFormatter": "biomejs.biome",
+
+  // 3. "[astro]" 언어에 대해서만 기본 포맷터를 Astro 공식 확장 프로그램으로 재정의합니다.
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "cSpell.words": ["gsap"]
+}

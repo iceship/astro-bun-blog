@@ -1,9 +1,10 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
 
-import cloudflare from '@astrojs/cloudflare';
+import cloudflare from "@astrojs/cloudflare";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare()
+  site: "https://blog.iceship.dev",
+  adapter: cloudflare(),
 });
