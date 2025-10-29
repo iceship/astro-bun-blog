@@ -1,9 +1,13 @@
 ---
+import Foo from "../components/Foo.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Button } from "@/components/ui/button";
 
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<h2>My awesome blog subtitle</h2>
+	<Foo />
+	<Button>Click Me</Button>
 </BaseLayout>
