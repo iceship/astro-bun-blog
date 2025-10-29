@@ -10,5 +10,8 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "cSpell.words": ["daisyui", "frontmatter", "gsap", "prefersdark"]
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "cSpell.words": ["daisyui", "frontmatter", "gsap", "nord", "prefersdark"]
 }

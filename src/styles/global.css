@@ -4,7 +4,6 @@
 @plugin "daisyui" {
   /* biome-ignore lint/correctness/noUnknownProperty: <themes> */
   themes:
-    light --default,
-    dark --prefersdark,
-    cupcake;
+    nord --default,
+    dracula --prefersdark;
 }
