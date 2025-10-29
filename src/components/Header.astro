@@ -3,18 +3,14 @@ import Navigation from "./Navigation.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
 
-<header>
-  <nav>
+<header class="navbar mb-4 border-b border-base-300">
+  <div class="navbar-start">
+    <a href="/" class="btn btn-ghost text-xl normal-case">iceship's log</a>
+  </div>
+  <div class="navbar-center">
     <Navigation />
-    <div>
-      <ThemeIcon />
-    </div>
-  </nav>
+  </div>
+  <div class="navbar-end">
+    <ThemeIcon />
+  </div>
 </header>
-
-<style>
-  div {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>

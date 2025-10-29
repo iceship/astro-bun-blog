@@ -13,5 +13,12 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "cSpell.words": ["daisyui", "frontmatter", "gsap", "nord", "prefersdark"]
+  "cSpell.words": [
+    "daisyui",
+    "frontmatter",
+    "gsap",
+    "nord",
+    "prefersdark",
+    "synthwave"
+  ]
 }
