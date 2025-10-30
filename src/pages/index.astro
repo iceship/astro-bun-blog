@@ -1,38 +1,45 @@
 ---
-import { getCollection } from "astro:content"; // Import getCollection
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "Home Page";
+const pageTitle = "Iceship's log";
 
-// Fetch all blog posts and sort them by publication date
+// Fetch all blog posts
 const allPosts = await getCollection("blog");
+
+// Sort posts by date in descending order
 const sortedPosts = allPosts.sort(
-	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
-	<p>Welcome to my blog! This is where I share my thoughts and experiences.</p>
-	<p>Cheers!</p>
-	<p>Best regards, iceship</p>
-	<hr />
-
-	<h3>Latest Blog Posts</h3>
-	<ul>
+	<div>
 		{
 			sortedPosts.map((post) => (
-				<li>
-					<a href={`/posts/${post.id}`}>{post.data.title}</a>
-					<p>
-						<small>{post.data.pubDate.toLocaleDateString()}</small>
-					</p>
-				</li>
+				<div class="card bg-base-100 w-96 shadow-sm">
+					<figure class="h-48 overflow-hidden">
+						<Image
+							src={post.data.image}
+							alt={post.data.alt}
+							class="w-full h-full object-cover"
+						/>
+					</figure>
+					<div class="card-body">
+						<h2 class="card-title">
+							<a href={`/posts/${post.id}`}>{post.data.title}</a>
+							<div class="badge badge-secondary">{post.data.targetKeyword}</div>
+						</h2>
+						<p>{post.data.description}</p>
+						<div class="card-actions justify-end">
+							{post.data.tags.slice(0, 4).map((tag: string) => (
+								<div class="badge badge-outline">{tag}</div>
+							))}
+						</div>
+					</div>
+				</div>
 			))
 		}
-	</ul>
-
-	<a href="posts/post-1">Read more about my first post</a>
-	<h3>Sample Button</h3>
-	<button class="btn btn-primary">Button</button>
+	</div>
 </BaseLayout>

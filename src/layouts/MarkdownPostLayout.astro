@@ -9,18 +9,18 @@ const { frontmatter } = Astro.props;
   <div class="mb-8 text-center">
     <h1 class="text-4xl font-bold mb-2">{frontmatter.title}</h1>
     <p class="text-gray-500 text-sm">
-      {frontmatter.pubDate.toLocaleDateString()}
+      {frontmatter.date.toLocaleDateString()}
     </p>
     <p class="text-gray-700 italic mt-2">{frontmatter.description}</p>
     <p class="text-gray-600 text-sm">Written by: {frontmatter.author}</p>
   </div>
 
   {
-    frontmatter.coverImage && (
+    frontmatter.image && (
       <div class="mb-8">
         <Image
-          src={frontmatter.coverImage}
-          alt={frontmatter.coverAlt}
+          src={frontmatter.image}
+          alt={frontmatter.alt}
           widths={[200, 400, 800]}
           sizes="(max-width: 800px) 100vw, 800px"
           class="w-full h-auto rounded-lg shadow-md"

@@ -10,12 +10,14 @@ const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      pubDate: z.date(),
+      date: z.date(),
       description: z.string(),
-      author: z.string(),
-      coverImage: image(),
-      coverAlt: z.string(),
       tags: z.array(z.string()),
+      author: z.string(),
+      image: z.preprocess((val) => `./assets/${val}`, image()),
+      alt: z.string(),
+      targetKeyword: z.string(),
+      draft: z.boolean().default(true),
     }),
 });
 // Export a single `collections` object to register your collection(s)
