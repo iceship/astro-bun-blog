@@ -6,7 +6,7 @@ tags: ["hono"]
 author: iceship
 image: hono-basic.png
 alt: Hono Basic
-targetKeyword: Hono
+targetKeyword: hono
 draft: false
 ---
 ## Hono Basic

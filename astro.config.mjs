@@ -10,7 +10,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.iceship.dev",
-  adapter: cloudflare(),
+  adapter: cloudflare({ imageService: "compile" }),
   integrations: [preact(), icon()],
   prefetch: {
     defaultStrategy: "viewport",

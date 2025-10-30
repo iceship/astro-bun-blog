@@ -5,8 +5,8 @@ description: Astro로 만드는 블로그에 관한 내용 그 동안의 여정�
 tags: ["astro", "blogging"]
 author: iceship
 image: about-blog-1761801805806.webp
-alt: The Astro logo on a dark background with a pink glow.
-targetKeyword: Blog
+alt: about this blog.
+targetKeyword: blog
 draft: true
 ---
 ## 예전부터

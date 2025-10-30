@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+// Fetch all blog posts
+const allPosts = await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+// Sort posts by date in descending order
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+---
+
+<div
+  class="not-prose grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+>
+  {
+    sortedPosts.map((post) => (
+      <a
+        href={`/posts/${post.id}`}
+        class="card group bg-base-100 shadow-sm no-underline text-current 
+                 border border-base-content/10 
+                 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+      >
+        <figure class="aspect-video relative">
+          <Image
+            src={post.data.image}
+            alt={post.data.alt}
+            class="object-cover w-full h-full"
+          />
+          <div class="badge badge-secondary absolute top-2 right-2">
+            {post.data.targetKeyword}
+          </div>
+        </figure>
+        <div class="card-body pt-2 px-4 pb-4 gap-2">
+          <h2 class="card-title text-lg truncate font-semibold transition-colors group-hover:text-primary">
+            {post.data.title}
+          </h2>
+          <p class="line-clamp-2">{post.data.description}</p>
+          <div class="card-actions justify-end">
+            {post.data.tags.slice(0, 3).map((tag: string) => (
+              <div class="badge badge-outline badge-info badge-sm">{tag}</div>
+            ))}
+            {post.data.tags.length > 3 && (
+              <div class="badge badge-outline badge-info badge-sm">
+                +{post.data.tags.length - 3}
+              </div>
+            )}
+          </div>
+        </div>
+      </a>
+    ))
+  }
+</div>

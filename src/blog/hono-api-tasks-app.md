@@ -2,11 +2,11 @@
 title: Hono API Tasks App
 date: 2025-10-19
 description: Hono로 API 서버 백앤드 만들기
-tags: ["Hono","API", "Drizzle","Zod","OpenAPI"]
+tags: ["hono","api", "drizzle","zod","openapi"]
 author: iceship
 image: hono-api.png
 alt: hono api tasks app
-targetKeyword: Hono
+targetKeyword: hono
 draft: false
 ---
 ## 프로젝트 기본 설정
