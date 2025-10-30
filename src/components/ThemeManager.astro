@@ -2,7 +2,6 @@
 type Props = {
   defaultTheme?: "auto" | "dark" | "light" | undefined;
 };
-
 const { defaultTheme = "auto" } = Astro.props;
 ---
 
@@ -10,26 +9,50 @@ const { defaultTheme = "auto" } = Astro.props;
   window.theme ??= (() => {
     const defaultTheme =
       document.currentScript.getAttribute("data-default-theme");
+
     const storageKey = "theme";
     const store =
       typeof localStorage !== "undefined"
         ? localStorage
         : { getItem: () => null, setItem: () => {} };
 
-    const mediaMatcher = window.matchMedia("(prefers-color-scheme: light)");
-    let systemTheme = mediaMatcher.matches ? "light" : "dark";
+    // ✅ 시스템 다크 선호 감지는 dark 기준이 더 자연스러움
+    const mediaMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+    let systemTheme = mediaMatcher.matches ? "dark" : "light";
     mediaMatcher.addEventListener("change", (event) => {
-      systemTheme = event.matches ? "light" : "dark";
-      applyTheme(getTheme());
+      systemTheme = event.matches ? "dark" : "light";
+      applyTheme(getTheme()); // auto일 때 자연 반영
     });
 
+    // ✅ light/dark -> DaisyUI 테마 매핑
+    const THEME_MAP = {
+      light: "nord",
+      dark: "dracula",
+    };
+
     function applyTheme(theme) {
-      const resolvedTheme = theme === "auto" ? systemTheme : theme;
-      document.documentElement.dataset.theme = resolvedTheme;
+      const resolvedTheme = theme === "auto" ? systemTheme : theme; // "light" | "dark"
+      const dataTheme = THEME_MAP[resolvedTheme] ?? resolvedTheme; // "nord" | "dracula"
+
+      // ✅ 유틸리티용(variant): data-mode
+      document.documentElement.dataset.mode = resolvedTheme;
+
+      // ✅ DaisyUI용: data-theme
+      document.documentElement.dataset.theme = dataTheme;
+
+      // ✅ 브라우저 폼/스크롤바 등
       document.documentElement.style.colorScheme = resolvedTheme;
+
+      // 이벤트 payload를 명확히
       document.dispatchEvent(
         new CustomEvent("theme-changed", {
-          detail: { theme, systemTheme, defaultTheme },
+          detail: {
+            theme, // 사용자가 선택한 값 ("auto" | "light" | "dark")
+            resolvedTheme, // 실제 적용된 값 ("light" | "dark")
+            dataTheme, // DaisyUI 테마 ("nord" | "dracula")
+            systemTheme, // 시스템 선호 ("light" | "dark")
+            defaultTheme, // 초기 디폴트
+          },
         }),
       );
     }
@@ -53,10 +76,13 @@ const { defaultTheme = "auto" } = Astro.props;
 
     return { setTheme, getTheme, getSystemTheme, getDefaultTheme };
   })();
+
+  // 초기 적용
   theme.setTheme(theme.getTheme());
 </script>
 
 <script>
+  // Astro 페이지 전환 후에도 재적용
   document.addEventListener("astro:after-swap", () => {
     window.theme.setTheme(window.theme.getTheme());
   });

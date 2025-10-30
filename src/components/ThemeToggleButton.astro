@@ -81,9 +81,10 @@ const { themeIconRelationship = "opposite" } = Astro.props;
 
       bindEvents() {
         this.addEventListener("click", this.toggleTheme);
+        console.log("Binding theme change listener");
         document.addEventListener("theme-changed", (e) =>
           this.updateThemeIconAndAriaLabel(
-            e.detail.currentTheme,
+            e.detail.theme ?? theme.getTheme(),
             e.detail.systemTheme,
           ),
         );

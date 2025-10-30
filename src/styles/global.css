@@ -5,16 +5,11 @@
   /* biome-ignore lint/correctness/noUnknownProperty: <themes> */
   themes:
     nord --default,
-    dracula --prefersdark,
-    light,
-    dark;
+    dracula --prefersdark;
 }
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
-@custom-variant prefers-dark (&:where(
-  [data-theme="dark"],
-  [data-theme="dark"] *
-));
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+@custom-variant light (&:where([data-mode="light"], [data-mode="light"] *));
+
 @layer base {
   html {
     scroll-behavior: smooth;
