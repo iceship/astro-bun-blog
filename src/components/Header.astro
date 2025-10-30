@@ -1,17 +1,19 @@
 ---
-import ThemeIcon from "./ThemeIcon.astro";
+import ThemeToggleButton from "./ThemeToggleButton.astro";
 ---
 
 <header class="w-full bg-base-100 shadow-sm">
   <div class="navbar max-w-2xl lg:max-w-4xl mx-auto px-4 py-2">
     <div class="navbar-start">
-      <img src="/favicon-96x96.png" alt="Iceship Logo" class="h-12 w-12" />
+      <a href="/" class="hover:opacity-75 transition-opacity">
+        <img src="/favicon-96x96.png" alt="Iceship Logo" class="h-12 w-12" />
+      </a>
     </div>
     <div class="navbar-center">
       <a class="btn btn-ghost text-xl">iceship's log</a>
     </div>
     <div class="navbar-end">
-      <ThemeIcon />
+      <ThemeToggleButton />
     </div>
   </div>
 </header>

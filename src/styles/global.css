@@ -4,6 +4,18 @@
 @plugin "daisyui" {
   /* biome-ignore lint/correctness/noUnknownProperty: <themes> */
   themes:
-    nord --default,
-    dracula --prefersdark;
+    light --default,
+    dark --prefersdark;
+}
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+@custom-variant prefers-dark (&:where(
+  [data-theme="dark"],
+  [data-theme="dark"] *
+));
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
 }
