@@ -16,11 +16,11 @@ const { frontmatter } = Astro.props;
   </div>
 
   {
-    frontmatter.image && (
+    frontmatter.coverImage && (
       <div class="mb-8">
         <Image
-          src={frontmatter.image.url}
-          alt={frontmatter.image.alt}
+          src={frontmatter.coverImage}
+          alt={frontmatter.coverAlt}
           widths={[200, 400, 800]}
           sizes="(max-width: 800px) 100vw, 800px"
           class="w-full h-auto rounded-lg shadow-md"

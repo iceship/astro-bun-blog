@@ -2,9 +2,8 @@
 title: My Third Blog Post
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
-image:
-    url: './assets/post-3.png'
-    alt: "The Astro logo on a dark background with rainbow rays."
+coverImage: './assets/post-3.png'
+coverAlt: "The Astro logo on a dark background with rainbow rays."
 pubDate: 2022-07-15
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---

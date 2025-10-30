@@ -2,9 +2,8 @@
 title: My Second Blog Post
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
-image:
-    url: './assets/post-2.png'
-    alt: "The Astro logo on a dark background with a purple gradient arc."
+coverImage: './assets/post-2.png'
+coverAlt: "The Astro logo on a dark background with a purple gradient arc."
 pubDate: 2022-07-08
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
