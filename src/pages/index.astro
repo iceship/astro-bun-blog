@@ -15,30 +15,44 @@ const sortedPosts = allPosts.sort(
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<div>
+	<div
+		class="not-prose grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+	>
 		{
 			sortedPosts.map((post) => (
-				<div class="card bg-base-100 w-96 shadow-sm">
-					<figure class="h-48 overflow-hidden">
+				<a
+					href={`/posts/${post.id}`}
+					class="card group bg-base-100 shadow-sm no-underline text-current 
+                 border border-base-content/10 
+                 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				>
+					<figure class="aspect-video relative">
 						<Image
 							src={post.data.image}
 							alt={post.data.alt}
-							class="w-full h-full object-cover"
+							class="object-cover w-full h-full"
 						/>
+						<div class="badge badge-secondary absolute top-2 right-2">
+							{post.data.targetKeyword}
+						</div>
 					</figure>
-					<div class="card-body">
-						<h2 class="card-title">
-							<a href={`/posts/${post.id}`}>{post.data.title}</a>
-							<div class="badge badge-secondary">{post.data.targetKeyword}</div>
+					<div class="card-body pt-2 px-4 pb-4 gap-2">
+						<h2 class="card-title text-lg truncate font-semibold transition-colors group-hover:text-primary">
+							{post.data.title}
 						</h2>
-						<p>{post.data.description}</p>
+						<p class="line-clamp-2">{post.data.description}</p>
 						<div class="card-actions justify-end">
-							{post.data.tags.slice(0, 4).map((tag: string) => (
-								<div class="badge badge-outline">{tag}</div>
+							{post.data.tags.slice(0, 3).map((tag: string) => (
+								<div class="badge badge-outline badge-info badge-sm">{tag}</div>
 							))}
+							{post.data.tags.length > 3 && (
+								<div class="badge badge-outline badge-info badge-sm">
+									+{post.data.tags.length - 3}
+								</div>
+							)}
 						</div>
 					</div>
-				</div>
+				</a>
 			))
 		}
 	</div>

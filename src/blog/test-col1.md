@@ -1,5 +1,5 @@
 ---
-title: 블로그에 관하여
+title: Test Col 1
 date: 2025-10-30
 description: Astro로 만드는 블로그에 관한 내용 그 동안의 여정을 담았다. 힘들고 어려웠던 처절한 코딩과의 싸움
 tags: ["astro", "blogging"]

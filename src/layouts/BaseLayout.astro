@@ -24,7 +24,9 @@ const { pageTitle } = Astro.props;
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
-    <main class="prose lg:prose-xl mx-auto px-4 py-8 grow">
+    <main
+      class="prose lg:prose-xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grow max-w-5xl"
+    >
       <slot />
     </main>
   </body>
