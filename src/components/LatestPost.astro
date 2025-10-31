@@ -14,7 +14,7 @@ const sortedPosts = allPosts.sort(
 ---
 
 <div
-  class="not-prose grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
 >
   {
     sortedPosts.map((post) => (
@@ -39,16 +39,6 @@ const sortedPosts = allPosts.sort(
             {post.data.title}
           </h2>
           <p class="line-clamp-2">{post.data.description}</p>
-          <div class="card-actions justify-end">
-            {post.data.tags.slice(0, 3).map((tag: string) => (
-              <div class="badge badge-outline badge-info badge-sm">{tag}</div>
-            ))}
-            {post.data.tags.length > 3 && (
-              <div class="badge badge-outline badge-info badge-sm">
-                +{post.data.tags.length - 3}
-              </div>
-            )}
-          </div>
         </div>
       </a>
     ))

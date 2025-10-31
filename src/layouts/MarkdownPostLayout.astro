@@ -1,48 +1,71 @@
 ---
 import { Image } from "astro:assets";
+import { formatedDate } from "../../lib/utils";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  author,
+  image: heroImage,
+  tags = [],
+} = frontmatter;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <div class="mb-8 text-center">
-    <h1 class="text-4xl font-bold mb-2">{frontmatter.title}</h1>
-    <p class="text-gray-500 text-sm">
-      {frontmatter.date.toLocaleDateString()}
-    </p>
-    <p class="text-gray-700 italic mt-2">{frontmatter.description}</p>
-    <p class="text-gray-600 text-sm">Written by: {frontmatter.author}</p>
-  </div>
-
-  {
-    frontmatter.image && (
-      <div class="mb-8">
-        <Image
-          src={frontmatter.image}
-          alt={frontmatter.alt}
-          widths={[200, 400, 800]}
-          sizes="(max-width: 800px) 100vw, 800px"
-          class="w-full h-auto rounded-lg shadow-md"
-        />
+<BaseLayout pageTitle={title}>
+  <main class="mx-auto px-4 sm:px-6 lg:px-8">
+    <header
+      class:list={[
+        "relative rounded-xl overflow-hidden mb-12",
+        heroImage
+          ? "text-white h-96"
+          : "bg-base-200 text-base-content h-auto p-12",
+      ]}
+    >
+      {
+        heroImage && (
+          <Image
+            src={heroImage}
+            alt={description}
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 800px) 100vw, 1200px"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        )
+      }
+      <div class:list={["absolute inset-0", heroImage && "bg-black/50"]}></div>
+      <div
+        class="relative h-full flex flex-col justify-center items-center text-center p-6"
+      >
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+          {title}
+        </h1>
+        <p class="text-lg md:text-xl opacity-90 max-w-3xl">{description}</p>
+        <div class="mt-6 text-sm opacity-80">
+          <span>{formatedDate(date)}</span>
+          {author && <span class="mx-2">•</span>}
+          {author && <span>By {author}</span>}
+        </div>
       </div>
-    )
-  }
+    </header>
 
-  <div class="flex flex-wrap gap-2 mb-8 justify-center">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <a
-          href={`/tags/${tag}`}
-          class="badge badge-outline badge-primary hover:badge-secondary"
-        >
-          {tag}
-        </a>
-      ))
-    }
-  </div>
+    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+      {
+        tags.map((tag: string) => (
+          <a
+            href={`/tags/${tag}`}
+            class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+          >
+            #{tag}
+          </a>
+        ))
+      }
+    </div>
 
-  <article class="prose lg:prose-xl mx-auto">
-    <slot />
-  </article>
+    <article class="prose prose-lg mx-auto">
+      <slot />
+    </article>
+  </main>
 </BaseLayout>
