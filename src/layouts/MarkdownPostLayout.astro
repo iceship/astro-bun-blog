@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { formatedDate } from "../../lib/utils";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
@@ -12,6 +11,14 @@ const {
   image: heroImage,
   tags = [],
 } = frontmatter;
+
+const formatedDate = (date: Date) => {
+  return date.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 ---
 
 <BaseLayout pageTitle={title}>
@@ -63,7 +70,7 @@ const {
     }
   </div>
 
-  <article class="prose prose-lg mx-auto">
+  <article class="prose prose-lg max-w-none mx-auto">
     <slot />
   </article>
 </BaseLayout>
