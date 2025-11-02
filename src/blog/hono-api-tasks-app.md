@@ -19,7 +19,7 @@ draft: false
 
 ### pnpm으로 project 생성
 
-```bash
+```bash title="create hono"
 pnpm create hono@latest
 ```
 
@@ -74,7 +74,7 @@ fatal: not a git repository (or any of the parent directories): .git
 ```
 
 #### eslint.config.mjs 수정
-```javascript
+```js
 import antfu from "@antfu/eslint-config";
 
 export default antfu(
@@ -114,7 +114,7 @@ export default antfu(
 
 ```
 #### package.json에 lint 추가
-```
+```json
 "lint": "eslint ."
 ```
 

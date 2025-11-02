@@ -6,11 +6,23 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
+import astroExpressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.iceship.dev",
   adapter: cloudflare({ imageService: "compile" }),
-  integrations: [preact(), sitemap()],
+  integrations: [
+    preact(),
+    sitemap(),
+    astroExpressiveCode({
+      themes: ["dracula", "nord"],
+
+      frames: {
+        showCopyToClipboardButton: true,
+      },
+    }),
+  ],
   prefetch: {
     defaultStrategy: "viewport",
     prefetchAll: true,
@@ -23,17 +35,5 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-  },
-  markdown: {
-    syntaxHighlight: "shiki",
-    shikiConfig: {
-      themes: {
-        light: "github-light",
-        dark: "github-dark",
-      },
-      defaultColor: "light-dark()",
-      wrap: true,
-      transformers: [],
-    },
   },
 });
