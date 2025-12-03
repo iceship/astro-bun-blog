@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "post-1.md",
+                "file": "hono-api-tasks-app.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "post-1"
+              "title": "hono-api-tasks-app"
+            }
+          },
+          {
+            "id": "4d1c8495e835dd8b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "proxmox-console-autologin.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "proxmox-console-autologin"
             }
           },
           {
@@ -27,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "proxmox-console-autologin.md",
+                "file": "typescript-node.js-init.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "proxmox-console-autologin"
+              "title": "typescript-node.js-init"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -68,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "cloudflare",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -186,6 +200,11 @@
   },
   "active": "711f22be089b8cab",
   "lastOpenFiles": [
+    "proxmox-console-autologin.md",
+    "typescript-node.js-init.md",
+    "assets/typescript-node.js-init-1764724377719.webp",
+    "hono-api-tasks-app.md",
+    "hono-basic.md",
     "assets/proxmox-console-autologin-1764207566256.webp",
     "about-blog.md",
     "assets/about-blog-1761801805806.webp",
